@@ -8,6 +8,9 @@
     %thead
       %tr
         %th #
+        %th
+          Favorite
+          %i.fa.fa-star{"aria-hidden" => "true", style: 'color:#f0C300'}
         %th Good or Bad?
         %th Tweet
         %th User name
@@ -22,24 +25,34 @@
             \.
           %td
             %p
-              .pull-left
+              = tweet.starvote_count
+              = link_to starvote_tweet_path(tweet) do
+                %i.fa.fa-star-o{"aria-hidden" => "true"}
+              %em
+                _____[
+                = tweet.starvote_count
+                ]_____
+          %td
+            %p
               = tweet.upvote_count
               = link_to upvote_tweet_path(tweet) do
                 %i.fa.fa-thumbs-up{"aria-hidden" => "true"}
-              .pull-right
-              = tweet.downvote_count
-              =link_to downvote_tweet_path(tweet) do
+              %em
+                _____[
+                = tweet.net_vote
+                ]_____
+              = link_to downvote_tweet_path(tweet) do
                 %i.fa.fa-thumbs-down{"aria-hidden" => "true"}
+              = tweet.downvote_count
           %td
             %p
               = link_to tweet.tweet, tweet.link
-              %em
-                Net Value:
-                = tweet.net_vote
+
               %em
                 (
                 = truncate(tweet.link, length: 8)
                 )
+
           %td= link_to tweet.user_name
           %td= tweet.created_at
 

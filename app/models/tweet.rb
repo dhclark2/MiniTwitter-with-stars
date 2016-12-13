@@ -1,7 +1,13 @@
 class Tweet < ApplicationRecord
+  has_many :votes
+
   validates :tweet, presence: true, length: {minimum: 1, maximum: 140}, allow_blank: false
   validates :link, presence: true
   validates :user_name, presence: true
+
+  def starvote_count
+    votes.where(starvote: true).count
+  end
 
   def upvote_count
     votes.where(upvote: true).count

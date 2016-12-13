@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :tweets do
     member do
+      get :starvote
       get :upvote
       get :downvote
     end
