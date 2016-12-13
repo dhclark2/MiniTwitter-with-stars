@@ -19,14 +19,23 @@
         %tr
           %td
             = index + 1
+            \.
           %td
-            .pull-left
-              %i.fa.fa-thumbs-up{"aria-hidden" => "true"}
-            .pull-right
-              %i.fa.fa-thumbs-down{"aria-hidden" => "true"}
+            %p
+              .pull-left
+              = tweet.upvote_count
+              = link_to upvote_tweet_path(tweet) do
+                %i.fa.fa-thumbs-up{"aria-hidden" => "true"}
+              .pull-right
+              = tweet.downvote_count
+              =link_to downvote_tweet_path(tweet) do
+                %i.fa.fa-thumbs-down{"aria-hidden" => "true"}
           %td
             %p
               = link_to tweet.tweet, tweet.link
+              %em
+                Net Value:
+                = tweet.net_vote
               %em
                 (
                 = truncate(tweet.link, length: 8)

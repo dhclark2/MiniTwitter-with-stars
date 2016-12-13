@@ -47,6 +47,20 @@ class TweetsController < ApplicationController
     redirect_to tweets_url, notice: 'Tweet was successfully destroyed.'
   end
 
+  def upvote
+    @tweet = Tweet.find(params[:id])
+    @tweet.votes.create(upvote: true)
+
+    redirect_to @tweet
+  end
+
+  def downvote
+    @tweet = Tweet.find(params[:id])
+    @tweet.votes.create(upvote: false)
+
+    redirect_to @tweet
+  end
+
   private
     # Only allow a trusted parameter "white list" through.
     def tweet_params
