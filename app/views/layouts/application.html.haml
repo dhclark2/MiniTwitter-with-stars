@@ -18,13 +18,16 @@
     = csrf_meta_tags
   %body
     %nav.navbar.navbar-inverse.navbar-fixed-top{role: "navigation"}
-      .container
+      .container-fluid.container
         .navbar-header
           %button.navbar-toggle.collapsed{type: "button", data: {toggle: "collapse", target: "#navbar"}, aria: {expanded: "false", controls: "navbar"} }
             %span.sr-only Toggle navigation
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
+          .pull-left
+          %a.navbar-brand{:href => "/"}
+            %i.fa.fa-twitter{"aria-hidden" => "true", style: 'margin-left: 10%; font-size: 25px; color: #79E7FF'}
           = link_to "/", class: "navbar-brand" do
             MiniTwitter
         #navbar.collapse.navbar-collapse

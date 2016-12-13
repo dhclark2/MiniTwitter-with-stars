@@ -47,12 +47,12 @@ class TweetsController < ApplicationController
     redirect_to tweets_url, notice: 'Tweet was successfully destroyed.'
   end
 
-  def starvote
-    @tweet = Tweet.find(params[:id])
-    @tweet.votes.create(starvote: true)
-
-    redirect_to tweets_path
-  end
+  # def starvote
+  #   @tweet = Tweet.find(params[:id])
+  #   @tweet.starvote.create(starvote: true)
+  #
+  #   redirect_to tweets_path
+  # end
 
   def upvote
     @tweet = Tweet.find(params[:id])

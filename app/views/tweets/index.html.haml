@@ -25,13 +25,13 @@
             \.
           %td
             %p
-              = tweet.starvote_count
+              -# -# = tweet.starvote
               = link_to starvote_tweet_path(tweet) do
                 %i.fa.fa-star-o{"aria-hidden" => "true"}
-              %em
-                _____[
-                = tweet.starvote_count
-                ]_____
+              -# %em
+              -#   _____[
+              -#   = tweet.starvote
+              -#   ]_____
           %td
             %p
               = tweet.upvote_count

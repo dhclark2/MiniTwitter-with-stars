@@ -5,8 +5,8 @@ class Tweet < ApplicationRecord
   validates :link, presence: true
   validates :user_name, presence: true
 
-  def starvote_count
-    votes.where(starvote: true).count
+  def starvote
+    starvote.where(starvote: true).count
   end
 
   def upvote_count
