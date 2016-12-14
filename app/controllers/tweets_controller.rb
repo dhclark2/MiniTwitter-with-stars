@@ -47,25 +47,16 @@ class TweetsController < ApplicationController
     redirect_to tweets_url, notice: 'Tweet was successfully destroyed.'
   end
 
-  # def starvote
-  #   @tweet = Tweet.find(params[:id])
-  #   @tweet.starvote.create(starvote: true)
-  #
-  #   redirect_to tweets_path
-  # end
-
-  def upvote
+  def star
     @tweet = Tweet.find(params[:id])
-    @tweet.votes.create(upvote: true)
+    if @tweet.stars.count == 0
+      @tweet.stars.create
+      redirect_to @tweet, notice: 'Tweet was star-value was changed.'
+    else
+      @tweet.stars.delete_all
+      redirect_to @tweet, notice: 'Tweet was star-value was changed.'
+    end
 
-    redirect_to tweets_path
-  end
-
-  def downvote
-    @tweet = Tweet.find(params[:id])
-    @tweet.votes.create(upvote: false)
-
-    redirect_to tweets_path
   end
 
   private
